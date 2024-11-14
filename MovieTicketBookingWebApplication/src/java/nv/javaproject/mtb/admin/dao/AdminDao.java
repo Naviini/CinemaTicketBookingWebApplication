@@ -9,4 +9,9 @@ public class AdminDao {
     private String query;
     private PreparedStatement pst;
     private ResultSet rs;
+
+    public AdminDao(Connection con) {
+        this.con = con;
+    }
+    public Admin logAdmin(String email,String password)
 }
