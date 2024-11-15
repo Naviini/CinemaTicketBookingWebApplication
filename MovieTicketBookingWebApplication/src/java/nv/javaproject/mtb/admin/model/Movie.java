@@ -156,3 +156,113 @@ public class Movie {
     }
     
 }
+
+
+
+//package models;
+//
+//public class Movie {
+//    private int movieId;
+//    private String title;
+//    private String description;
+//    private String genre;
+//    private String showtimes;
+//    private int availableSeats;
+//
+//    // Default constructor
+//    public Movie() {}
+//
+//    // Parameterized constructor
+//    public Movie(int movieId, String title, String description, String genre, String showtimes, int availableSeats) {
+//        this.movieId = movieId;
+//        this.title = title;
+//        this.description = description;
+//        this.genre = genre;
+//        this.showtimes = showtimes;
+//        this.availableSeats = availableSeats;
+//    }
+//
+//    // Getters and Setters
+//    public int getMovieId() {
+//        return movieId;
+//    }
+//
+//    public void setMovieId(int movieId) {
+//        this.movieId = movieId;
+//    }
+//
+//    public String getTitle() {
+//        return title;
+//    }
+//
+//    public void setTitle(String title) {
+//        this.title = title;
+//    }
+//
+//    public String getDescription() {
+//        return description;
+//    }
+//
+//    public void setDescription(String description) {
+//        this.description = description;
+//    }
+//
+//    public String getGenre() {
+//        return genre;
+//    }
+//
+//    public void setGenre(String genre) {
+//        this.genre = genre;
+//    }
+//
+//    public String getShowtimes() {
+//        return showtimes;
+//    }
+//
+//    public void setShowtimes(String showtimes) {
+//        this.showtimes = showtimes;
+//    }
+//
+//    public int getAvailableSeats() {
+//        return availableSeats;
+//    }
+//
+//    public void setAvailableSeats(int availableSeats) {
+//        this.availableSeats = availableSeats;
+//    }
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
