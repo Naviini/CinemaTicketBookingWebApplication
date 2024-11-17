@@ -170,7 +170,34 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 //}
 
 
+//Example Integration in BookingController.java
 
+//protected boolean createBooking(Booking booking) {
+//    boolean isSuccess = false;
+//    try (Connection connection = DBConnection.getConnection()) {
+//        String sql = "INSERT INTO Booking (customer_id, movie_id, seat_number, booking_date) VALUES (?, ?, ?, ?)";
+//        PreparedStatement statement = connection.prepareStatement(sql);
+//        statement.setInt(1, booking.getCustomerId());
+//        statement.setInt(2, booking.getMovieId());
+//        statement.setString(3, booking.getSeatNumber());
+//        statement.setTimestamp(4, new java.sql.Timestamp(booking.getBookingDate().getTime()));
+//
+//        int rowsInserted = statement.executeUpdate();
+//        if (rowsInserted > 0) {
+//            isSuccess = true;
+//
+//            // Send email notification
+//            String email = "recipient@example.com"; // Replace with recipient's email address (e.g., fetched from Customer data)
+//            String subject = "Booking Confirmation";
+//            String message = "Dear Customer,\n\nYour booking has been confirmed for Movie ID: " + booking.getMovieId()
+//                            + "\nSeat Number: " + booking.getSeatNumber() + "\nThank you for booking with us!";
+//            EmailUtility.sendEmail(email, subject, message);
+//        }
+//    } catch (SQLException e) {
+//        e.printStackTrace();
+//    }
+//    return isSuccess;
+//}
 
 
 

@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package nv.javaproject.mtb.user.model;
+package nv.javaproject.mtb.user.models;
 
-import nv.javaproject.mtb.admin.model.Person;
+import nv.javaproject.mtb.admin.models.Person;
 
 public class User extends Person{
     private int id;
