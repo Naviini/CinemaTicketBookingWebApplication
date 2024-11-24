@@ -27,11 +27,11 @@ public class EmailUtility {
         properties.put("mail.smtp.port", SMTP_PORT);
 
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
+            protected PasswordAuthentication getPasswordAuthentication(){
                 return new PasswordAuthentication(USERNAME, PASSWORD);
             }
         });
-
+        
         try {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(USERNAME));

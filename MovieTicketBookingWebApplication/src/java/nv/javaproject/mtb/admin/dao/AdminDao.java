@@ -5,7 +5,7 @@
 package nv.javaproject.mtb.admin.dao;
 import java.sql.*;
 public class AdminDao {
-    private Connection con;
+    private final Connection con;
     private String query;
     private PreparedStatement pst;
     private ResultSet rs;
@@ -13,5 +13,5 @@ public class AdminDao {
     public AdminDao(Connection con) {
         this.con = con;
     }
-    public Admin logAdmin(String email,String password)
+//    public Admin logAdmin(String email,String password)
 }

@@ -11,19 +11,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import models.Booking;
-import models.Payment;
-import utils.DBConnection;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+//import models.Booking;
+//import models.Payment;
+import nv.javaproject.mtb.admin.models.Booking;
+import nv.javaproject.mtb.admin.models.Payment;
+import nv.javaproject.mtb.dbconn.DBconn;
 
 @WebServlet("/CustomerDashboardController")
 public class CustomerDashboardController extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int customerId = Integer.parseInt(request.getSession().getAttribute("customerId").toString()); // Assume customer is logged in
         List<Booking> bookings = fetchCustomerBookings(customerId);
@@ -34,7 +37,7 @@ public class CustomerDashboardController extends HttpServlet{
     // Fetch bookings for the customer
     private List<Booking> fetchCustomerBookings(int customerId) {
         List<Booking> bookings = new ArrayList<>();
-        try (Connection connection = DBConnection.getConnection()) {
+        try (Connection connection = DBconn.getConnection()) {
             String sql = "SELECT * FROM Booking WHERE customer_id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, customerId);
@@ -51,9 +54,12 @@ public class CustomerDashboardController extends HttpServlet{
                 bookings.add(booking);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return bookings;
+//        catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return bookings;
     }
 
     // Fetch payment details for a booking

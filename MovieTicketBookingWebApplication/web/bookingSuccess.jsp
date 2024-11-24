@@ -4,7 +4,9 @@
     Author     : user
 --%>
 
+<%@page import="nv.javaproject.mtb.dbconn.DBconn"%> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% DBconn db = new DBconn(); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +19,9 @@
     <h2>Booking Successful!</h2>
     <p>Your ticket has been successfully booked.</p>
     <a href="movies.jsp">Back to Movies</a>
+    
+    <%= db.getConn()%>
+    
 </body>
 </html>
 

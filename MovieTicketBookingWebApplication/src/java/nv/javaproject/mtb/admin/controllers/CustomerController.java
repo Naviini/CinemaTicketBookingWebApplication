@@ -14,8 +14,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import models.Customer;
-import utils.DBConnection; 
+//import models.Customer;
+import nv.javaproject.mtb.admin.models.Customer;
+//import utils.DBConnection; 
 
 @WebServlet("/CustomerController")
 //public class CustomerController {
@@ -23,6 +24,15 @@ public class CustomerController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     // Handle GET requests (e.g., displaying registration/login pages)
+
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if ("register".equalsIgnoreCase(action)) {
@@ -33,6 +43,15 @@ public class CustomerController extends HttpServlet {
     }
 
     // Handle POST requests (e.g., form submissions for registration/login)
+
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
 
@@ -76,7 +95,6 @@ public class CustomerController extends HttpServlet {
                 isRegistered = true;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return isRegistered;
     }
@@ -95,9 +113,12 @@ public class CustomerController extends HttpServlet {
                 isAuthenticated = true;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return isAuthenticated;
+//        catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return isAuthenticated;
     }
 }
 

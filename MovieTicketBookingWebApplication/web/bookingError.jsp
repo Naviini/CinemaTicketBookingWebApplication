@@ -3,8 +3,9 @@
     Created on : Nov 15, 2024, 10:52:44 PM
     Author     : user
 --%>
-
+<%@page import="nv.javaproject.mtb.dbconn.DBconn"%> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% DBconn db = new DBconn(); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,5 +18,8 @@
     <h2>Booking Failed</h2>
     <p>Sorry, there was an issue with your booking. Please try again.</p>
     <a href="movies.jsp">Back to Movies</a>
+    
+    <%= db.getConn()%>
+    
 </body>
 </html>

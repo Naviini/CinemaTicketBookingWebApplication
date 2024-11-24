@@ -40,10 +40,8 @@ public class DBconn {
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (ClassNotFoundException e) {
             System.out.println("MySQL Driver not found. Please add the JDBC library to the project.");
-            e.printStackTrace();
         } catch (SQLException e) {
             System.out.println("Connection failed! Check output console.");
-            e.printStackTrace();
         }
         return connection;
     }
@@ -55,7 +53,11 @@ public class DBconn {
                 connection.close();
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
+
+    public static Connection getConnection() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
+

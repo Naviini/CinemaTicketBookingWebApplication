@@ -8,18 +8,19 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import models.Payment;
-import utils.DBConnection;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import nv.javaproject.mtb.admin.models.Payment;
+import nv.javaproject.mtb.dbconn.DBconn;
 
 @WebServlet("/PaymentController")
 public class PaymentController extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Payment details (for demonstration)
         String amount = request.getParameter("amount");
@@ -61,7 +62,7 @@ public class PaymentController extends HttpServlet{
     // Store payment details in the database
     private boolean storePayment(Payment payment) {
         boolean isStored = false;
-        try (Connection connection = DBConnection.getConnection()) {
+        try (Connection connection = DBconn.getConn()) {
             String sql = "INSERT INTO Payment (booking_id, amount, status, payment_date) VALUES (?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, payment.getBookingId());
@@ -74,7 +75,6 @@ public class PaymentController extends HttpServlet{
                 isStored = true;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return isStored;
     }

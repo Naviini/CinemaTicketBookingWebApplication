@@ -17,8 +17,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import models.Booking;
-import utils.DBConnection;
+import nv.javaproject.mtb.admin.models.Booking;
+//import models.Booking;
+//import utils.DBConnection;
 
 @WebServlet("/BookingController")
 public class BookingController extends HttpServlet{
@@ -62,7 +63,8 @@ public class BookingController extends HttpServlet{
     
 
 
-protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int customerId = Integer.parseInt(request.getSession().getAttribute("customerId").toString()); // Assuming customer is logged in
         int movieId = Integer.parseInt(request.getParameter("movieId"));
         String seatNumber = request.getParameter("seatNumber"); // Assuming a form input for seat number
@@ -92,7 +94,6 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
                 isAvailable = false; // Seat is already booked
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return isAvailable;
     }

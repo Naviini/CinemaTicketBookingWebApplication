@@ -16,8 +16,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import models.Movie;
-import utils.DBConnection;
+import nv.javaproject.mtb.admin.models.Movie;
+import nv.javaproject.mtb.dbconn.DBconn;
+//import utils.DBConnection;
 
 @WebServlet("/MovieController")
 
@@ -25,6 +26,7 @@ public class MovieController extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
     // Handle GET requests (e.g., displaying movie listings)
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Movie> movies = fetchMovies();
         request.setAttribute("movies", movies);
@@ -34,7 +36,7 @@ public class MovieController extends HttpServlet{
     // Fetch movies from the database
     private List<Movie> fetchMovies() {
         List<Movie> movies = new ArrayList<>();
-        try (Connection connection = DBConnection.getConnection()) {
+        try (Connection connection = DBconn.getConnection()) {
             String sql = "SELECT * FROM Movie";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
@@ -50,7 +52,6 @@ public class MovieController extends HttpServlet{
                 movies.add(movie);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return movies;
     }
